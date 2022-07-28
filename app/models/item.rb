@@ -35,6 +35,17 @@ class Item < ActiveRecord::Base
 			#checking old records with persisted and assigning delisted
 			item.state = item.persisted? && (item.changed & changeable_attrs).any? ? 'delisted' : 'listed'
 			item.save!
+
+			# item.state = 'listed'
+			# item.weight = row_hash['weight']
+			# item.price = row_hash['price']
+			# item.price_per_weight = row_hash['price_per_weight']
+
+			# attrs = %w[weight price price_per_weight]
+
+			# #checking old records with persisted and assigning delisted
+			# item.state = 'delisted' if item.persisted? && (item.changed & attrs).any?
+			# item.save!
 			
 			# Item.create! row_hash
 		end
